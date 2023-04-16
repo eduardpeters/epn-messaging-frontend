@@ -1,13 +1,19 @@
 import { socket } from './socket';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './components/Home';
 import './styles/App.css';
 
 socket.connect();
 
 function App() {
     return (
-        <div className="App">
-            <h1>My first Vite App</h1>
-        </div>
+        <BrowserRouter>
+            <div>
+                <Routes>
+                    <Route path="/" element={<Home />}></Route>
+                </Routes>
+            </div>
+        </BrowserRouter>
     );
 }
 
