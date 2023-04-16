@@ -1,13 +1,23 @@
-import React from 'react';
+import { useEffect } from 'react';
 import ChatBar from './ChatBar';
 import ChatBody from './ChatBody';
 import ChatFooter from './ChatFooter';
+import { Socket } from 'socket.io-client';
 
 interface ChatPageProps {
-    socket: any;
+    socket: Socket;
 }
 
 const ChatPage = ({ socket }: ChatPageProps) => {
+
+    useEffect(() => {
+        socket.connect();
+
+        return () => {
+            socket.disconnect()
+        };
+    }, []);
+
     return (
         <div className="chat">
             <ChatBar />
