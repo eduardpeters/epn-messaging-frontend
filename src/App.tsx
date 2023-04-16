@@ -1,5 +1,5 @@
 import { socket } from './socket';
-import './App.css';
+import './styles/App.css';
 
 socket.connect();
 
