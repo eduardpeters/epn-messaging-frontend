@@ -1,7 +1,6 @@
 import { socket } from './socket';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './components/Home';
-import './styles/App.css';
 
 socket.connect();
 

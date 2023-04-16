@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import '../styles/Home.css';
 
 const Home = () => {
     const USERNAME_MIN_LENGTH = 6;
@@ -26,7 +27,7 @@ const Home = () => {
                 value={userName}
                 onChange={(e) => setUserName(e.target.value)}
             />
-            <button className="home__cta">SIGN IN</button>
+            <button className="home__button">SIGN IN</button>
         </form>
     );
 };
