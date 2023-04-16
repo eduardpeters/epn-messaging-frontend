@@ -3,6 +3,7 @@ import ChatBar from './ChatBar';
 import ChatBody from './ChatBody';
 import ChatFooter from './ChatFooter';
 import { Socket } from 'socket.io-client';
+import '../styles/ChatPage.css';
 
 interface ChatPageProps {
     socket: Socket;

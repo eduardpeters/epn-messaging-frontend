@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import '../styles/ChatBody.css';
 
 const ChatBody = () => {
     const navigate = useNavigate();
@@ -11,9 +12,9 @@ const ChatBody = () => {
 
     return (
         <>
-            <header className="chat__mainHeader">
+            <header className="chat__header">
                 <p>The Chat Room</p>
-                <button className="leaveChat__btn" onClick={handleLeaveChat}>
+                <button className="chat__button-leave" onClick={handleLeaveChat}>
                     LEAVE CHAT
                 </button>
             </header>

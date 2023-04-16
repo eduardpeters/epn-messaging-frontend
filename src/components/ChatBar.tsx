@@ -1,3 +1,6 @@
+import '../styles/ChatBar.css';
+
+
 const ChatBar = () => {
     return (
         <div className="chat__sidebar">

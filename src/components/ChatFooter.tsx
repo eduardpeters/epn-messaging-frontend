@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import '../styles/ChatFooter.css';
 
 const ChatFooter = () => {
     const [message, setMessage] = useState('');
@@ -18,7 +19,7 @@ const ChatFooter = () => {
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                 />
-                <button className="sendBtn">SEND</button>
+                <button className="chat__button-send">SEND</button>
             </form>
         </div>
     );

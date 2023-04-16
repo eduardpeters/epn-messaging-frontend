@@ -1,0 +1,17 @@
+.chat__header {
+    margin: 30px 0 20px 0;
+}
+
+.chat__sidebar {
+    background-color: #474747;
+    border-right: 1px solid #fdfdfd;
+    flex: 0.2;
+    height: 100%;
+    padding: 20px;
+}
+
+.chat__users > p {
+    color: #607eaa;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
