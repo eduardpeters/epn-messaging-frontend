@@ -9,9 +9,10 @@ const Home = () => {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        if (userName.length < USERNAME_MIN_LENGTH)
-        localStorage.setItem('userName', userName);
-        navigate('/chat');
+        if (userName.length > USERNAME_MIN_LENGTH) {
+            localStorage.setItem('userName', userName);
+            navigate('/chat');
+        }
     };
 
     return (
