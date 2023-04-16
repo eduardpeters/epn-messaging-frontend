@@ -1,7 +1,7 @@
-import { io } from 'socket.io-client';
+import { socket } from './socket';
 import './App.css';
 
-const socket = io(import.meta.env.VITE_API_BASE_URL);
+socket.connect();
 
 function App() {
     return (
