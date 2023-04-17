@@ -1,7 +1,12 @@
 import { useNavigate } from 'react-router-dom';
 import '../styles/ChatBody.css';
+import { MessageData } from '../epntypes';
 
-const ChatBody = () => {
+interface ChatBodyProps {
+    messages: MessageData[];
+}
+
+const ChatBody = ({messages}: ChatBodyProps) => {
     const navigate = useNavigate();
 
     const handleLeaveChat = () => {
@@ -19,22 +24,26 @@ const ChatBody = () => {
                 </button>
             </header>
 
-            {/*This shows messages sent from you*/}
             <div className="message__container">
-                <div className="message__chats">
-                    <p className="sender__name">You</p>
-                    <div className="message__sender">
-                        <p>Hello there</p>
-                    </div>
-                </div>
 
-                {/*This shows messages received by you*/}
-                <div className="message__chats">
-                    <p>Other</p>
-                    <div className="message__recipient">
-                        <p>Hey, I'm good, you?</p>
-                    </div>
-                </div>
+                {messages.map(message =>
+                    message.name === localStorage.getItem('userName') ?
+                    (
+                        <div className="message__chats">
+                            <p className="sender__name">You</p>
+                            <div className="message__sender">
+                                <p>{message.text}</p>
+                            </div>
+                        </div>
+                    ) : (
+                        <div className="message__chats">
+                            <p>{message.name}</p>
+                            <div className="message__recipient">
+                                <p>{message.text}</p>
+                            </div>
+                        </div>
+                    )
+                )}
 
                 {/*This is triggered when a user is typing*/}
                 <div className="message__status">
