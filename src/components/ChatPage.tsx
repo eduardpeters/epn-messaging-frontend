@@ -14,19 +14,22 @@ const ChatPage = ({ socket }: ChatPageProps) => {
     const [messages, setMessages] = useState<MessageData[]>([]);
 
     useEffect(() => {
-        const handleMessageResponse = (data: MessageData) => {
-            console.log("Received", data);
-            setMessages([...messages, data]);
-        } 
-
         socket.connect();
-        socket.on('messageResponse', handleMessageResponse);
-
         return () => {
-            socket.off('messageResponse', handleMessageResponse);
-            socket.disconnect()
+            socket.disconnect();
         };
     }, []);
+
+    useEffect(() => {
+        const handleMessageResponse = (data: MessageData) => {
+            setMessages([...messages, data]);
+        }
+
+        socket.on('messageResponse', handleMessageResponse);
+        return () => {
+            socket.off('messageResponse', handleMessageResponse);
+        };
+    }, [messages]);
 
     return (
         <div className="chat">
