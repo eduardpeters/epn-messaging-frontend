@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Socket } from 'socket.io-client';
-import '../styles/ChatFooter.css';
 import type { MessageData } from '../epntypes';
+import '../styles/ChatFooter.css';
 
 interface ChatFooterProps {
     socket: Socket;
