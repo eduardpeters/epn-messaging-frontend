@@ -24,7 +24,7 @@ const ChatPage = ({ socket }: ChatPageProps) => {
             <ChatBar />
             <div className="chat__main">
                 <ChatBody />
-                <ChatFooter />
+                <ChatFooter socket={socket} />
             </div>
         </div>
     );
