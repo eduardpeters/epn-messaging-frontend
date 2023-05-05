@@ -15,7 +15,7 @@ const ChatFooter = ({ socket }: ChatFooterProps) => {
         if (message.length > 0 && localStorage.getItem('userName')) {
             const data: MessageData ={
                 text: message,
-                name: localStorage.getItem('userName') as String,
+                name: localStorage.getItem('userName') as string,
                 id: `${socket.id}${Math.random()}`,
                 socketID: socket.id,
             } 
