@@ -12,6 +12,7 @@ interface ChatPageProps {
 
 const ChatPage = ({ socket }: ChatPageProps) => {
     const [messages, setMessages] = useState<MessageData[]>([]);
+    const userName = localStorage.getItem('userName');
 
     useEffect(() => {
         socket.connect();
@@ -19,6 +20,16 @@ const ChatPage = ({ socket }: ChatPageProps) => {
             socket.disconnect();
         };
     }, []);
+
+    useEffect(() => {
+        const emitNewUser = () => {
+            socket.emit('newUser', { userName: userName, socketID: socket.id });
+        }
+        socket.on('connect', emitNewUser);
+        return () => {
+            socket.off('connect', emitNewUser);
+        }
+    }, [socket]);
 
     useEffect(() => {
         const handleMessageResponse = (data: MessageData) => {
@@ -33,7 +44,7 @@ const ChatPage = ({ socket }: ChatPageProps) => {
 
     return (
         <div className="chat">
-            <ChatBar />
+            <ChatBar socket={socket} />
             <div className="chat__main">
                 <ChatBody messages={messages} />
                 <ChatFooter socket={socket} />
