@@ -1,6 +1,6 @@
 export interface MessageData {
-    text: String;
-    name: String;
-    id: String;
-    socketID: String;
+    text: string;
+    name: string;
+    id: string;
+    socketID: string;
 }
