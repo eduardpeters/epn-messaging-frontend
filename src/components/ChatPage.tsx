@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import ChatBar from './ChatBar';
 import ChatBody from './ChatBody';
 import ChatFooter from './ChatFooter';
@@ -12,6 +12,7 @@ interface ChatPageProps {
 
 const ChatPage = ({ socket }: ChatPageProps) => {
     const [messages, setMessages] = useState<MessageData[]>([]);
+    const lastMessageRef = useRef<HTMLDivElement>(null);
     const userName = localStorage.getItem('userName');
 
     useEffect(() => {
@@ -42,11 +43,15 @@ const ChatPage = ({ socket }: ChatPageProps) => {
         };
     }, [messages]);
 
+    useEffect(() => {
+        lastMessageRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }, [messages]);
+
     return (
         <div className="chat">
             <ChatBar socket={socket} />
             <div className="chat__main">
-                <ChatBody messages={messages} />
+                <ChatBody messages={messages} lastMessageRef={lastMessageRef} />
                 <ChatFooter socket={socket} />
             </div>
         </div>

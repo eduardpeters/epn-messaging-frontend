@@ -4,9 +4,10 @@ import { MessageData } from '../epntypes';
 
 interface ChatBodyProps {
     messages: MessageData[];
+    lastMessageRef: React.RefObject<HTMLDivElement>;
 }
 
-const ChatBody = ({ messages }: ChatBodyProps) => {
+const ChatBody = ({ messages, lastMessageRef }: ChatBodyProps) => {
     const navigate = useNavigate();
 
     const handleLeaveChat = () => {
@@ -49,6 +50,7 @@ const ChatBody = ({ messages }: ChatBodyProps) => {
                 <div className="message__status">
                     <p>Someone is typing...</p>
                 </div>
+                <div ref={lastMessageRef} />
             </div>
         </>
     );
