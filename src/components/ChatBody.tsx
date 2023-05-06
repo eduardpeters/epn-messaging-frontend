@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
+import type { MessageData } from '../epntypes';
 import '../styles/ChatBody.css';
-import { MessageData } from '../epntypes';
 
 interface ChatBodyProps {
     messages: MessageData[];

@@ -1,6 +1,6 @@
 import { Socket } from 'socket.io-client';
-import '../styles/ChatBar.css';
 import { useEffect, useState } from 'react';
+import '../styles/ChatBar.css';
 
 interface ChatBarProps {
     socket: Socket;
