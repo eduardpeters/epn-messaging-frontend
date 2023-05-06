@@ -4,10 +4,11 @@ import '../styles/ChatBody.css';
 
 interface ChatBodyProps {
     messages: MessageData[];
+    typingStatus: string;
     lastMessageRef: React.RefObject<HTMLDivElement>;
 }
 
-const ChatBody = ({ messages, lastMessageRef }: ChatBodyProps) => {
+const ChatBody = ({ messages, typingStatus, lastMessageRef }: ChatBodyProps) => {
     const navigate = useNavigate();
 
     const handleLeaveChat = () => {
@@ -45,10 +46,8 @@ const ChatBody = ({ messages, lastMessageRef }: ChatBodyProps) => {
                             </div>
                         )
                 )}
-
-                {/*This is triggered when a user is typing*/}
                 <div className="message__status">
-                    <p>Someone is typing...</p>
+                    <p>{typingStatus}</p>
                 </div>
                 <div ref={lastMessageRef} />
             </div>

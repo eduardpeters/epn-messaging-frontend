@@ -10,6 +10,10 @@ interface ChatFooterProps {
 const ChatFooter = ({ socket }: ChatFooterProps) => {
     const [message, setMessage] = useState('');
 
+    const handleTyping = () => {
+        socket.emit('typing', `${localStorage.getItem('userName')} is typing`);
+    }
+
     const handleSendMessage = (e: React.FormEvent) => {
         e.preventDefault();
         if (message.length > 0 && localStorage.getItem('userName')) {
@@ -32,6 +36,7 @@ const ChatFooter = ({ socket }: ChatFooterProps) => {
                     className="message"
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
+                    onKeyDown={handleTyping}
                 />
                 <button className="chat__button-send">SEND</button>
             </form>

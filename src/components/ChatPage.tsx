@@ -12,6 +12,7 @@ interface ChatPageProps {
 
 const ChatPage = ({ socket }: ChatPageProps) => {
     const [messages, setMessages] = useState<MessageData[]>([]);
+    const [typingStatus, setTypingStatus] = useState('');
     const lastMessageRef = useRef<HTMLDivElement>(null);
     const userName = localStorage.getItem('userName');
 
@@ -33,6 +34,16 @@ const ChatPage = ({ socket }: ChatPageProps) => {
     }, [socket]);
 
     useEffect(() => {
+        const handleTypingResponse = (data: string) => {
+            setTypingStatus(data);
+        }
+        socket.on('typingResponse', handleTypingResponse);
+        return () => {
+            socket.off('typingResponse', handleTypingResponse);
+        };
+    });
+
+    useEffect(() => {
         const handleMessageResponse = (data: MessageData) => {
             setMessages([...messages, data]);
         }
@@ -51,7 +62,11 @@ const ChatPage = ({ socket }: ChatPageProps) => {
         <div className="chat">
             <ChatBar socket={socket} />
             <div className="chat__main">
-                <ChatBody messages={messages} lastMessageRef={lastMessageRef} />
+                <ChatBody 
+                    messages={messages}
+                    typingStatus={typingStatus}
+                    lastMessageRef={lastMessageRef}
+                />
                 <ChatFooter socket={socket} />
             </div>
         </div>
