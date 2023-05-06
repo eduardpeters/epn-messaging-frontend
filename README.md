@@ -3,6 +3,10 @@ Venturing into WebSocket territory with a React App
 
 ## Features
 Working on it!
+- Single chat room with users joining by username
+- Lists all active users in the chat room
+- Displays when another user is typing
+- Auto Scroll for messages display
 
 ## Installation
 
