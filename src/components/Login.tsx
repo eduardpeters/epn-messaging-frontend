@@ -16,19 +16,19 @@ const Login = () => {
     };
 
     return (
-        <form className="home__container" onSubmit={handleSubmit}>
-            <h2 className="home__header">Sign in to Open Chat</h2>
-            <label htmlFor="username">Username</label>
+        <form className="login__container" onSubmit={handleSubmit}>
+            <h1 className="login__title">Sign in to Open Chat</h1>
+            <label className="login__label" htmlFor="username">Username</label>
             <input
                 type="text"
                 minLength={USERNAME_MIN_LENGTH}
                 name="username"
                 id="username"
-                className="username__input"
+                className="login__input"
                 value={userName}
                 onChange={(e) => setUserName(e.target.value)}
             />
-            <button className="home__button">SIGN IN</button>
+            <button className="login__button">SIGN IN</button>
         </form>
     );
 };
