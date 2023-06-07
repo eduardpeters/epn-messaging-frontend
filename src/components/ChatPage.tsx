@@ -25,7 +25,7 @@ const ChatPage = ({ socket }: ChatPageProps) => {
 
     useEffect(() => {
         const emitNewUser = () => {
-            socket.emit('newUser', { userName: userName, socketID: socket.id });
+            socket.emit('newUser', { username: userName, socketID: socket.id });
         }
         socket.on('connect', emitNewUser);
         return () => {

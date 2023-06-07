@@ -17,12 +17,12 @@ const ChatFooter = ({ socket }: ChatFooterProps) => {
     const handleSendMessage = (e: React.FormEvent) => {
         e.preventDefault();
         if (message.length > 0 && localStorage.getItem('userName')) {
-            const data: MessageData ={
+            const data: MessageData = {
                 text: message,
                 name: localStorage.getItem('userName') as string,
                 id: `${socket.id}${Math.random()}`,
                 socketID: socket.id,
-            } 
+            }
             socket.emit('message', data);
         }
         setMessage('');
